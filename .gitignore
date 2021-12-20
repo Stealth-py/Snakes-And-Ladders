@@ -23,3 +23,10 @@
 hs_err_pid*
 
 .vscode
+
+*.xml
+*.iml
+
+target/
+
+src/main/java/module-info.java
