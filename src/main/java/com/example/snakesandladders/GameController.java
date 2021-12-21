@@ -29,6 +29,6 @@ public class GameController {
     @FXML
     protected void setDiceRollButton(){
         System.out.println("hi");
-        player1Label.setStyle("-fx-background-color: #00FFFF;");
+
     }
 }
