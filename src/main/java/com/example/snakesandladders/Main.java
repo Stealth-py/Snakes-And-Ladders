@@ -1,4 +1,4 @@
-package com.example.snakesandladders.Game;
+package com.example.snakesandladders;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader("src/resources/gameboard.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gameboard.fxml"));
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
