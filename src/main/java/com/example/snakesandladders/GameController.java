@@ -4,21 +4,31 @@ import com.example.snakesandladders.Board.gameBoard;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 
 public class GameController {
     @FXML
-    private Label playerTurnLabel;
+    private Label player1Label;
 
     @FXML
-    private Label diceRolledLabel;
+    private Label player2Label;
 
     @FXML
     private Button diceRollButton;
 
     @FXML
+    private ImageView bluePiece;
+
+    @FXML
+    private ImageView greenPiece;
+
+    @FXML
+    private GridPane boardGrid;
+
+    @FXML
     protected void setDiceRollButton(){
-        diceRollButton.setText("Roll dice for Player 1");
-        playerTurnLabel.setText("Current Turn: Player 1");
-        diceRolledLabel.setText("Dice rolled");
+        System.out.println("hi");
+        player1Label.setStyle("-fx-background-color: #00FFFF;");
     }
 }
