@@ -116,14 +116,34 @@ public class gameBoard {
 
     public int[] getBoardCoordinates(int x){
         int[] coords = new int[2];
-        int r = x/rows;
-        int c = x%10;
-        if(r%2==1){
-            c = cols-x%10;
+        if(x<11){
+            coords[0] = x-1;
+            coords[1] = 9;
+        }else{
+            if(x==100){
+                coords[0] = 0;
+                coords[1] = 0;
+            }else{
+                int r = rows - x/rows - 1;
+                int c = x%10;
+                if(r%2==0){
+                    if(x%10==0){
+                        c = 0;
+                    }else{
+                        c = cols - x%10;
+                    }
+                }else{
+                    if(x%10==0){
+                        c = cols - 1;
+                    }else{
+                        c = x%10-1;
+                    }
+                }
+                coords[0] = c;
+                coords[1] = r;
+            }
         }
-        coords[0] = c;
-        coords[1] = rows-r;
-        System.out.println(coords[0] +"-"+ coords[1]);
+        System.out.println(coords[1] +"-"+ coords[0] + ": " + x);
         return coords;
     }
 }

@@ -9,6 +9,7 @@ public class ObjectController {
     private GameController gameController;
     private gameBoard gameboard;
     private Tile[] boardTiles;
+    private boolean flag = false;
 
     public ObjectController(GameController gameController, gameBoard gameboard){
         this.gameboard = gameboard;
@@ -25,37 +26,49 @@ public class ObjectController {
         if(!(currPlayer.getHasGottenOut())){
             if(roll==1){
                 currPlayer.setHasGottenOut(true);
+                flag = true;
+            }else{
+                gameController.enableDiceRollButton();
+                swapTurns();
             }
         }
 
-        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
-        pauseTransition.setOnFinished(e -> {
-            int newPos = getNewPosition(roll);
-            Tile newTile = this.boardTiles[newPos-1];
-            Tile updatedTile = gameboard.getUpdatedTile(newTile);
-            int updatedPos = updatedTile.getTileNumber();
-            int[] coords = gameboard.getBoardCoordinates(updatedPos);
-            gameController.movePiece(coords[0], coords[1]);
+        if(currPlayer.getHasGottenOut()){
+            PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+            pauseTransition.setOnFinished(e -> {
+                int newPos = getNewPosition(roll);
+                Tile newTile = this.boardTiles[newPos-1];
+                Tile updatedTile = gameboard.getUpdatedTile(newTile);
+                currPlayer.setTile(updatedTile);
+                int updatedPos = updatedTile.getTileNumber();
+                int[] coords = gameboard.getBoardCoordinates(updatedPos);
+                gameController.movePiece(coords[0], coords[1]);
 
-            if(updatedPos==100){
-                pauseTransition.stop();
-            }else{
-                swapTurns();
-                gameController.enableDiceRollButton();
-            }
-        });
-        pauseTransition.play();
+                if(updatedPos==100){
+                    pauseTransition.stop();
+                }else{
+                    swapTurns();
+                    gameController.enableDiceRollButton();
+                }
+            });
+            pauseTransition.play();
+        }
     }
 
     public int getNewPosition(int roll){
         Player currPlayer = gameboard.currentPlayer();
-        Tile currTile = currPlayer.getTile();
-        if(currTile==null){
-            currPlayer.setTile(boardTiles[roll-1]);
-            return roll;
+        if(flag){
+            flag = false;
+            currPlayer.setTile(boardTiles[0]);
+            return 1;
         }
+        System.out.println(roll);
+        Tile currTile = currPlayer.getTile();
         int currTileNo = currTile.getTileNumber();
         int finalTileNo = currTileNo + roll;
+        if(finalTileNo>100){
+            return currTileNo;
+        }
         currPlayer.setTile(this.boardTiles[finalTileNo-1]);
         return finalTileNo;
     }
