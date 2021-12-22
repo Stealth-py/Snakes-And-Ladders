@@ -67,6 +67,7 @@ public class GameController implements Initializable {
         translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
         translateTransition.setByY(20);
         translateTransition.setByY(-20);
+        translateTransition.setAutoReverse(true);
         translateTransition.play();
     }
 
@@ -76,7 +77,15 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    protected void setDiceRollButton() throws IOException {
+    protected void setDiceRollButton() throws IOException, InterruptedException {
+        Player currPlayer = gameboard.currentPlayer();
+        if(currPlayer.getType()==1){
+            player2Label.setStyle("-fx-border-width: 0");
+            player1Label.setStyle("-fx-border-color: linear-gradient(to left, #cc9900 -14%, #ffff99 139%);");
+        }else{
+            player1Label.setStyle("-fx-border-width: 0");
+            player2Label.setStyle("-fx-border-color: linear-gradient(to left, #cc9900 -14%, #ffff99 139%);");
+        }
         objectController.moveAfterDiceRoll();
     }
 
@@ -111,7 +120,7 @@ public class GameController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("New.fxml"));
         Parent root = fxmlLoader.load();
         newGame = fxmlLoader.<NewGame>getController();
-        newGame.setPlayers(gameboard.currentPlayer(), gameboard.otherPlayer());
+        newGame.setPlayers(gameboard.otherPlayer(), gameboard.currentPlayer());
 
         curstage.setTitle("Game Over");
         curstage.setScene(new Scene(root));
@@ -119,18 +128,18 @@ public class GameController implements Initializable {
         curstage.setAlwaysOnTop(true);
     }
 
-    public void helper(){
-        if(NewGame.goAgain){
-            try{
-                boardGrid.getChildren().remove(bluePiece);
-                boardGrid.getChildren().remove(greenPiece);
-            }finally {
-                System.out.println("hi");
-            }
-        }else{
-            System.exit(0);
-        }
-    }
+//    public void helper(){
+//        if(NewGame.goAgain){
+//            try{
+//                boardGrid.getChildren().remove(bluePiece);
+//                boardGrid.getChildren().remove(greenPiece);
+//            }finally {
+//                System.out.println("hi");
+//            }
+//        }else{
+//            System.exit(0);
+//        }
+//    }
 
     public ImageView getCurrentPiece(){
         Player currPlayer = gameboard.currentPlayer();
@@ -140,7 +149,7 @@ public class GameController implements Initializable {
         return greenPiece;
     }
 
-    public void movePiece(int c, int r){
+    public void movePiece(int c, int r) {
         ImageView currPiece = getCurrentPiece();
         GridPane.setHalignment(currPiece, HPos.CENTER);
         try{

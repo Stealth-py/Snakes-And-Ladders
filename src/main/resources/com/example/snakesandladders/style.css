@@ -6,6 +6,3 @@
     -fx-text-fill:white;
     -fx-background-color:grey;
 }
-.button:hover{
-    box-shadow: 0 -3px black;
-}
