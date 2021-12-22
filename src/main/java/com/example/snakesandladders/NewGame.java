@@ -25,6 +25,7 @@ public class NewGame {
 
     @FXML
     public void exitGame(){
+        goAgain = false;
         System.exit(0);
     }
 

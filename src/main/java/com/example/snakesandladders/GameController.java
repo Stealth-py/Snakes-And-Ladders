@@ -128,19 +128,6 @@ public class GameController implements Initializable {
         curstage.setAlwaysOnTop(true);
     }
 
-//    public void helper(){
-//        if(NewGame.goAgain){
-//            try{
-//                boardGrid.getChildren().remove(bluePiece);
-//                boardGrid.getChildren().remove(greenPiece);
-//            }finally {
-//                System.out.println("hi");
-//            }
-//        }else{
-//            System.exit(0);
-//        }
-//    }
-
     public ImageView getCurrentPiece(){
         Player currPlayer = gameboard.currentPlayer();
         if(currPlayer.getType()==1){
