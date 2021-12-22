@@ -23,10 +23,10 @@ public class GameController {
     private Button diceRollButton;
 
     @FXML
-    private Button bluePiece;
+    private ImageView bluePiece;
 
     @FXML
-    private Button greenPiece;
+    private ImageView greenPiece;
 
     @FXML
     private GridPane boardGrid;
@@ -61,7 +61,7 @@ public class GameController {
         diceRollButton.setDisable(false);
     }
 
-    public Button getCurrentButton(){
+    public ImageView getCurrentButton(){
         Player currPlayer = gameboard.currentPlayer();
         if(currPlayer.getType()==1){
             return bluePiece;
@@ -70,7 +70,7 @@ public class GameController {
     }
 
     public void movePiece(int r, int c){
-        Button currButton = getCurrentButton();
+        ImageView currButton = getCurrentButton();
         currButton.setVisible(false);
     }
 }
