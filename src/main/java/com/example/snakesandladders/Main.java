@@ -14,7 +14,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("gameboard.fxml"));
         Parent root = fxmlLoader.load();
 
-        Scene scene = new Scene(root,365,620);
+        Scene scene = new Scene(root);
 
         stage.setTitle("Snakes and Ladders");
         stage.setScene(scene);
