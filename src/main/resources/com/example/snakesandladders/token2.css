@@ -7,8 +7,7 @@
     -fx-min-height: 18px;
     -fx-max-width: 18px;
     -fx-max-height: 18px;
-    -fx-background-color: #0009fb;
-    -fx-body-color: grey;
+    -fx-background-color: rgba(31,94,237,90);
     -fx-background-insets: 0px;
     -fx-padding: 0px;
 }

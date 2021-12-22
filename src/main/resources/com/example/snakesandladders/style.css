@@ -1,6 +1,6 @@
 
 .root{
-    -fx-background-color: white;
+    -fx-background-color: blue;
 }
 .button{
     -fx-text-fill:white;
@@ -8,7 +8,4 @@
 }
 .button:hover{
     -fx-background-color: yellowgreen;
-}
-#pane{
-    -fx-background-color: #E91E63;
 }
