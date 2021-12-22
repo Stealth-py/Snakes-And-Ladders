@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="219.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ap_project.New">
+   <children>
+      <ImageView fitHeight="219.0" fitWidth="430.0" pickOnBounds="true">
+         <image>
+            <Image url="@background2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="123.0" layoutY="14.0" prefHeight="45.0" prefWidth="197.0" style="-fx-text-fill: linear-gradient(to bottom right, #ffcc00 29%, #ffffcc 139%);;" text="Congratulations!">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font></Label>
+      <Pane layoutX="46.0" layoutY="59.0" opacity="0.9" prefHeight="75.0" prefWidth="154.0" style="-fx-background-color: grey; -fx-border-color: linear-gradient(to left, #cc9900 -14%, #ffff99 139%); -fx-border-width: 5;">
+         <children>
+            <Label layoutX="56.0" layoutY="11.0" prefHeight="27.0" prefWidth="42.0" style="-fx-text-fill: yellow;" text="Win" underline="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="38.0" prefHeight="27.0" prefWidth="82.0" style="-fx-text-fill: white;" text="PLAYER 1">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="243.0" layoutY="59.0" opacity="0.9" prefHeight="75.0" prefWidth="154.0" style="-fx-background-color: grey; -fx-border-color: linear-gradient(to left, #cc9900 -14%, #ffff99 139%);; -fx-border-width: 5;">
+         <children>
+            <Label layoutX="56.0" layoutY="11.0" prefHeight="20.0" prefWidth="42.0" style="-fx-text-fill: yellow;" text="Lose" underline="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="38.0" prefHeight="27.0" prefWidth="82.0" style="-fx-text-fill: white;" text="PLAYER 2">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="82.0" layoutY="148.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to top, #0066ff -14%, #ccccff 139%);;" text="Exit">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button layoutX="263.0" layoutY="148.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(to top, #00ff00 -14%, #ccccff 139%);;" text="Play Again">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
