@@ -131,19 +131,20 @@ public class gameBoard {
                 coords[0] = 0;
                 coords[1] = 0;
             }else{
-                int r = rows - x/rows - 1;
-                int c = x%10;
-                if(r%2==0){
-                    if(x%10==0){
+                int r, c;
+                if(x%10==0){
+                    r = rows - x/rows;
+                    if(r%2==0){
                         c = 0;
                     }else{
-                        c = cols - x%10;
+                        c = cols - 1;
                     }
                 }else{
-                    if(x%10==0){
-                        c = cols - 1;
+                    r = rows - x/rows - 1;
+                    if(r%2==0){
+                        c = cols - x%10;
                     }else{
-                        c = x%10-1;
+                        c = x%10 - 1;
                     }
                 }
                 coords[0] = c;

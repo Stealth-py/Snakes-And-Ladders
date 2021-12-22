@@ -21,19 +21,19 @@ public class NewGame {
     @FXML
     private Button playAgainButton;
 
+    public static boolean goAgain = false;
+
     @FXML
     public void exitGame(){
-        System.exit(0);
+        goAgain = false;
     }
 
     @FXML
     public void startNewGame() throws IOException {
-        Stage stage = (Stage)playAgainButton.getScene().getWindow();
-        stage.close();
-        GameController.startNewGame();
+        goAgain = true;
     }
 
-    public static void setPlayers(Player playerW, Player playerL){
+    public void setPlayers(Player playerW, Player playerL){
         if(playerW.getType()==1){
             playerWon = new Label("PLAYER 1");
             playerLost = new Label("PLAYER 2");

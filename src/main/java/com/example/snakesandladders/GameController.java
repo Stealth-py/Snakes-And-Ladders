@@ -5,9 +5,12 @@ import com.example.snakesandladders.Objects.ObjectController;
 import com.example.snakesandladders.Objects.Player;
 import com.example.snakesandladders.NewGame;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,16 +18,21 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class GameController {
+public class GameController implements Initializable {
     @FXML
-    private static Label player1Label;
+    private Label player1Label;
 
     @FXML
-    private static Label player2Label;
+    private Label player2Label;
 
     @FXML
     private Button diceRollButton;
@@ -41,11 +49,25 @@ public class GameController {
     @FXML
     private ImageView diceImage;
 
+    @FXML
+    private ImageView diceArrow;
+
     private gameBoard gameboard;
     private ObjectController objectController;
 
     public GameController(){
         initializeGameBoard();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        TranslateTransition translateTransition = new TranslateTransition();
+        translateTransition.setNode(diceArrow);
+        translateTransition.setDuration(Duration.millis(1000));
+        translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
+        translateTransition.setByY(20);
+        translateTransition.setByY(-20);
+        translateTransition.play();
     }
 
     private void initializeGameBoard(){
@@ -54,7 +76,7 @@ public class GameController {
     }
 
     @FXML
-    protected void setDiceRollButton(){
+    protected void setDiceRollButton() throws IOException {
         objectController.moveAfterDiceRoll();
     }
 
@@ -82,20 +104,32 @@ public class GameController {
         diceRollButton.setDisable(false);
     }
 
-    public static void startNewGame() throws IOException {
-        Stage curr = (Stage)player1Label.getScene().getWindow();
-        curr.close();
+    public void startNewGame() throws IOException {
+        NewGame newGame;
 
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("gameboard.fxml"));
+        Stage curstage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("New.fxml"));
         Parent root = fxmlLoader.load();
+        newGame = fxmlLoader.<NewGame>getController();
+        newGame.setPlayers(gameboard.currentPlayer(), gameboard.otherPlayer());
 
-        Scene scene = new Scene(root);
+        curstage.setTitle("Game Over");
+        curstage.setScene(new Scene(root));
+        curstage.show();
+        curstage.setAlwaysOnTop(true);
+    }
 
-        stage.setTitle("Snakes and Ladders");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+    public void helper(){
+        if(NewGame.goAgain){
+            try{
+                boardGrid.getChildren().remove(bluePiece);
+                boardGrid.getChildren().remove(greenPiece);
+            }finally {
+                System.out.println("hi");
+            }
+        }else{
+            System.exit(0);
+        }
     }
 
     public ImageView getCurrentPiece(){
@@ -115,23 +149,5 @@ public class GameController {
             System.out.println("hmm");
         }
         boardGrid.add(currPiece, c, r);
-    }
-
-    public void newGameScreen() throws IOException {
-        Stage newGame = new Stage();
-        Player winner = gameboard.currentPlayer();
-        Player lost = gameboard.otherPlayer();
-
-        NewGame.setPlayers(winner, lost);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("New.fxml"));
-        Parent root = fxmlLoader.load();
-
-        Scene newGameScene = new Scene(root);
-
-        newGame.setTitle("Game Over!");
-        newGame.setScene(newGameScene);
-        newGame.show();
-        newGame.setAlwaysOnTop(true);
     }
 }

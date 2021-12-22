@@ -19,7 +19,7 @@ public class ObjectController {
         this.boardTiles = this.gameboard.getBoardTiles();
     }
 
-    public void moveAfterDiceRoll(){
+    public void moveAfterDiceRoll() throws IOException {
         int roll = gameboard.diceRoll();
         gameController.changeDiceImage(roll);
         gameController.disableDiceRollButton();
@@ -50,7 +50,7 @@ public class ObjectController {
                     if(updatedPos==100){
                         currPlayer.setWon(true);
                         try {
-                            gameController.newGameScreen();
+                            gameController.startNewGame();
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
