@@ -7,7 +7,7 @@
     -fx-min-height: 18px;
     -fx-max-width: 18px;
     -fx-max-height: 18px;
-    -fx-background-color: rgba(31,94,237,90);
+    -fx-background-color: linear-gradient(to bottom left, #0000ff 40%, #ccffff 100%);
     -fx-background-insets: 0px;
     -fx-padding: 0px;
 }

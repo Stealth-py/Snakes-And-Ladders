@@ -46,7 +46,7 @@
             </GridPane>
          </children>
       </Pane>
-      <ToolBar layoutX="20.0" layoutY="531.0" prefHeight="65.0" prefWidth="327.0" stylesheets="@style.css">
+      <ToolBar layoutX="5.0" layoutY="527.0" prefHeight="74.0" prefWidth="355.0" style="-fx-background-color: linear-gradient(to bottom left, #0000ff -14%, #00ffff 139%);;" stylesheets="@style.css">
          <items>
             <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="210.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,8 +58,15 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="diceRollButton" defaultButton="true" mnemonicParsing="false" onAction="#setDiceRollButton" prefHeight="45.0" prefWidth="45.0" text="Dice" />
-            <Label fx:id="player2Label" prefHeight="30.0" prefWidth="74.0" text=" Player 2" textAlignment="CENTER" textFill="#f20606">
+            <Button fx:id="diceRollButton" defaultButton="true" mnemonicParsing="false" onAction="#setDiceRollButton" prefHeight="64.0" prefWidth="75.0">
+               <graphic>
+                  <ImageView fitHeight="55.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@dice/Dice6.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Label fx:id="player2Label" prefHeight="30.0" prefWidth="73.0" text=" Player 2" textAlignment="CENTER" textFill="#f20606">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

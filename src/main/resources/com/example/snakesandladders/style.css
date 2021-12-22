@@ -1,11 +1,11 @@
 
 .root{
-    -fx-background-color: blue;
+    -fx-background-color: linear-gradient(to bottom left, #0066ff -5%, #66ccff 74%);
 }
 .button{
     -fx-text-fill:white;
     -fx-background-color:grey;
 }
 .button:hover{
-    -fx-background-color: yellowgreen;
+    box-shadow: 0 -3px black;
 }
