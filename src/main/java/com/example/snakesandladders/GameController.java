@@ -43,14 +43,30 @@ public class GameController {
 
     private void initializeGameBoard(){
         gameboard = new gameBoard();
-        objectController = new ObjectController(gameboard);
+        objectController = new ObjectController(this, gameboard);
     }
 
     @FXML
     protected void setDiceRollButton(){
         objectController.moveAfterDiceRoll();
         Player currPlayer = gameboard.currentPlayer();
-        System.out.println(currPlayer.getType());
+        movePiece(0, 9);
+    }
+
+    public void changeDiceImage(int roll){
+        if(roll==1){
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice1.png")));
+        }else if(roll==2){
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+        }else if(roll==3){
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+        }else if(roll==4){
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+        }else if(roll==5){
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+        }else{
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+        }
     }
 
     public void disableDiceRollButton(){
@@ -69,8 +85,11 @@ public class GameController {
         return greenPiece;
     }
 
-    public void movePiece(int r, int c){
-        ImageView currButton = getCurrentButton();
-        currButton.setVisible(false);
+    public void movePiece(int c, int r){
+        try{
+            boardGrid.getChildren().remove(bluePiece);
+        }finally {
+            boardGrid.add(bluePiece, c, r);
+        }
     }
 }

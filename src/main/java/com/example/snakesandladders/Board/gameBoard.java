@@ -100,9 +100,15 @@ public class gameBoard {
 
     public boolean ifWon(){
         Player p = currentPlayer();
-        if(p.getTile().getTileNumber()==winTileNumber){
-            return true;
-        }
-        return false;
+        return p.getTile().getTileNumber() == winTileNumber;
+    }
+
+    public int[] getBoardCoordinates(int x){
+        int[] coords = new int[2];
+        int r = x/rows;
+        int c = (r%2==1)?(cols-1-x%10):(x%10);
+        coords[0] = r;
+        coords[1] = c;
+        return coords;
     }
 }
