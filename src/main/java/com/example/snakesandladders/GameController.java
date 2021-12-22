@@ -77,7 +77,7 @@ public class GameController {
         diceRollButton.setDisable(false);
     }
 
-    public ImageView getCurrentButton(){
+    public ImageView getCurrentPiece(){
         Player currPlayer = gameboard.currentPlayer();
         if(currPlayer.getType()==1){
             return bluePiece;
@@ -86,10 +86,11 @@ public class GameController {
     }
 
     public void movePiece(int c, int r){
+        ImageView currPiece = getCurrentPiece();
         try{
-            boardGrid.getChildren().remove(bluePiece);
+            boardGrid.getChildren().remove(currPiece);
         }finally {
-            boardGrid.add(bluePiece, c, r);
+            boardGrid.add(currPiece, c, r);
         }
     }
 }

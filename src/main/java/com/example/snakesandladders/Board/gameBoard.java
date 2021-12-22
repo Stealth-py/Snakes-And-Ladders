@@ -28,6 +28,18 @@ public class gameBoard {
         player2 = new Player(2);
     }
 
+    public Tile[] getBoardTiles(){
+        return this.boardTiles;
+    }
+
+    public Player getPlayer1(){
+        return this.player1;
+    }
+
+    public Player getPlayer2(){
+        return this.player2;
+    }
+
     private void initializeTiles(){
         boardTiles = new Tile[tiles];
         int j = 0;
@@ -73,7 +85,7 @@ public class gameBoard {
         laddersPos.put(84, 98);
     }
 
-    public Tile getNewTile(Tile currTile){
+    public Tile getUpdatedTile(Tile currTile){
         Tile newTile = currTile;
         int tileType = currTile.getTileType();
         int tileNum = currTile.getTileNumber();
@@ -83,7 +95,6 @@ public class gameBoard {
         }else if(tileType==1){
             newTile = boardTiles[laddersPos.get(tileNum)-1];
         }
-
         return newTile;
     }
 
@@ -106,9 +117,12 @@ public class gameBoard {
     public int[] getBoardCoordinates(int x){
         int[] coords = new int[2];
         int r = x/rows;
-        int c = (r%2==1)?(cols-1-x%10):(x%10);
-        coords[0] = r;
-        coords[1] = c;
+        int c = x%10;
+        if(r%2==1){
+            c = cols-1-x%10;
+        }
+        coords[0] = c;
+        coords[1] = rows-1-r;
         return coords;
     }
 }
