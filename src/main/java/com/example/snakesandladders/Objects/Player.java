@@ -1,17 +1,18 @@
 package com.example.snakesandladders.Objects;
 
-import javafx.scene.control.Button;
 
 public class Player {
     private int type;            //1 or 2
     private Tile tile;
     private boolean turn;        //true or false
     private boolean won;
+    private boolean hasGottenOut;
 
     public Player(int type){
         this.type = type;
         this.turn = false;
         this.won = false;
+        this.hasGottenOut = false;
     }
 
     public void setType(int type){
@@ -26,6 +27,9 @@ public class Player {
     public void setWon(boolean won){
         this.won = won;
     }
+    public void setHasGottenOut(boolean hasGottenOut){
+        this.hasGottenOut = hasGottenOut;
+    }
 
     public int getType(){
         return this.type;
@@ -38,5 +42,8 @@ public class Player {
     }
     public boolean getWon(){
         return this.won;
+    }
+    public boolean getHasGottenOut(){
+        return this.hasGottenOut;
     }
 }

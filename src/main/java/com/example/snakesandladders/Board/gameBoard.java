@@ -119,10 +119,10 @@ public class gameBoard {
         int r = x/rows;
         int c = x%10;
         if(r%2==1){
-            c = cols-1-x%10;
+            c = cols-x%10;
         }
         coords[0] = c;
-        coords[1] = rows-1-r;
+        coords[1] = rows-r;
         System.out.println(coords[0] +"-"+ coords[1]);
         return coords;
     }

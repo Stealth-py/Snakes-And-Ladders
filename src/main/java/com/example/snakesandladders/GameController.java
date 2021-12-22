@@ -4,6 +4,7 @@ import com.example.snakesandladders.Board.gameBoard;
 import com.example.snakesandladders.Objects.ObjectController;
 import com.example.snakesandladders.Objects.Player;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -49,8 +50,6 @@ public class GameController {
     @FXML
     protected void setDiceRollButton(){
         objectController.moveAfterDiceRoll();
-        Player currPlayer = gameboard.currentPlayer();
-        movePiece(0, 9);
     }
 
     public void changeDiceImage(int roll){
@@ -93,5 +92,6 @@ public class GameController {
             System.out.println("hmm");
         }
         boardGrid.add(currPiece, c, r);
+        GridPane.setHalignment(currPiece, HPos.CENTER);
     }
 }

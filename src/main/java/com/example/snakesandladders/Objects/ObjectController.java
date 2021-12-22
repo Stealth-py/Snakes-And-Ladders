@@ -2,14 +2,18 @@ package com.example.snakesandladders.Objects;
 
 import com.example.snakesandladders.Board.gameBoard;
 import com.example.snakesandladders.GameController;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
 public class ObjectController {
     private GameController gameController;
     private gameBoard gameboard;
+    private Tile[] boardTiles;
 
     public ObjectController(GameController gameController, gameBoard gameboard){
         this.gameboard = gameboard;
         this.gameController = gameController;
+        this.boardTiles = this.gameboard.getBoardTiles();
     }
 
     public void moveAfterDiceRoll(){
@@ -17,17 +21,34 @@ public class ObjectController {
         gameController.changeDiceImage(roll);
         gameController.disableDiceRollButton();
 
-        int newPos = getNewPosition(roll);
-        int[] coords = gameboard.getBoardCoordinates(newPos);
-        gameController.movePiece(coords[0], coords[1]);
+        Player currPlayer = gameboard.currentPlayer();
+        if(!(currPlayer.getHasGottenOut())){
+            if(roll==1){
+                currPlayer.setHasGottenOut(true);
+            }
+        }
 
-        swapTurns();
-        gameController.enableDiceRollButton();
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+        pauseTransition.setOnFinished(e -> {
+            int newPos = getNewPosition(roll);
+            Tile newTile = this.boardTiles[newPos-1];
+            Tile updatedTile = gameboard.getUpdatedTile(newTile);
+            int updatedPos = updatedTile.getTileNumber();
+            int[] coords = gameboard.getBoardCoordinates(updatedPos);
+            gameController.movePiece(coords[0], coords[1]);
+
+            if(updatedPos==100){
+                pauseTransition.stop();
+            }else{
+                swapTurns();
+                gameController.enableDiceRollButton();
+            }
+        });
+        pauseTransition.play();
     }
 
     public int getNewPosition(int roll){
         Player currPlayer = gameboard.currentPlayer();
-        Tile[] boardTiles = gameboard.getBoardTiles();
         Tile currTile = currPlayer.getTile();
         if(currTile==null){
             currPlayer.setTile(boardTiles[roll-1]);
@@ -35,7 +56,7 @@ public class ObjectController {
         }
         int currTileNo = currTile.getTileNumber();
         int finalTileNo = currTileNo + roll;
-        currPlayer.setTile(boardTiles[finalTileNo-1]);
+        currPlayer.setTile(this.boardTiles[finalTileNo-1]);
         return finalTileNo;
     }
 
