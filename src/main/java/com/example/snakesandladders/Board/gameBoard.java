@@ -123,6 +123,7 @@ public class gameBoard {
         }
         coords[0] = c;
         coords[1] = rows-1-r;
+        System.out.println(coords[0] +"-"+ coords[1]);
         return coords;
     }
 }

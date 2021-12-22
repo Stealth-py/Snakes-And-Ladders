@@ -59,13 +59,13 @@ public class GameController {
         }else if(roll==2){
             diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
         }else if(roll==3){
-            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice3.png")));
         }else if(roll==4){
-            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice4.png")));
         }else if(roll==5){
-            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice5.png")));
         }else{
-            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice2.png")));
+            diceImage.setImage(new Image(getClass().getResourceAsStream("dice/Dice6.png")));
         }
     }
 
@@ -90,7 +90,8 @@ public class GameController {
         try{
             boardGrid.getChildren().remove(currPiece);
         }finally {
-            boardGrid.add(currPiece, c, r);
+            System.out.println("hmm");
         }
+        boardGrid.add(currPiece, c, r);
     }
 }
