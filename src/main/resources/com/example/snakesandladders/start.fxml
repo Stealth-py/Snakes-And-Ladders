@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="317.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ap_project.Start">
+   <children>
+      <ImageView fitHeight="346.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@cover.png" />
+         </image></ImageView>
+      <Button layoutX="475.0" layoutY="254.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="90.0" text="Start Game" />
+   </children>
+</AnchorPane>
