@@ -86,12 +86,12 @@ public class GameController {
 
     public void movePiece(int c, int r){
         ImageView currPiece = getCurrentPiece();
+        GridPane.setHalignment(currPiece, HPos.CENTER);
         try{
             boardGrid.getChildren().remove(currPiece);
         }finally {
             System.out.println("hmm");
         }
         boardGrid.add(currPiece, c, r);
-        GridPane.setHalignment(currPiece, HPos.CENTER);
     }
 }
