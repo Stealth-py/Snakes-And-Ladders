@@ -21,6 +21,9 @@ public class gameBoard {
         initializeSnakes();
         initializeLadders();
         initializeTiles();
+        player1 = new Player(1);
+        player1.setTurn(true);
+        player2 = new Player(2);
     }
 
     private void initializeTiles(){
@@ -82,7 +85,7 @@ public class gameBoard {
         return newTile;
     }
 
-    public static int diceRoll(){
+    public int diceRoll(){
         return new Random().nextInt(6)+1;
     }
 

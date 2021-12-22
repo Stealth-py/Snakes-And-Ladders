@@ -1,10 +1,11 @@
 package com.example.snakesandladders;
 
 import com.example.snakesandladders.Board.gameBoard;
+import com.example.snakesandladders.Objects.ObjectController;
+import com.example.snakesandladders.Objects.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public class GameController {
@@ -18,17 +19,29 @@ public class GameController {
     private Button diceRollButton;
 
     @FXML
-    private ImageView bluePiece;
+    private Button bluePiece;
 
     @FXML
-    private ImageView greenPiece;
+    private Button greenPiece;
 
     @FXML
     private GridPane boardGrid;
 
+    private gameBoard gameboard;
+    private ObjectController objectController;
+
+    public GameController(){
+        initializeGameBoard();
+    }
+
+    private void initializeGameBoard(){
+        gameboard = new gameBoard();
+        objectController = new ObjectController(gameboard);
+    }
+
     @FXML
     protected void setDiceRollButton(){
-        System.out.println("hi");
-
+        objectController.moveAfterDiceRoll();
+        Player currPlayer = gameboard.currentPlayer();
     }
 }

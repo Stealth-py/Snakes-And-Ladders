@@ -5,8 +5,9 @@ public class Player {
     private Tile tile;
     private boolean turn;        //true or false
 
-    Player(int type){
+    public Player(int type){
         this.type = type;
+        this.turn = false;
     }
 
     public void setType(int type){

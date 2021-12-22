@@ -11,7 +11,7 @@ public class ObjectController {
         this.gameboard = gameboard;
     }
 
-    public void moveAfterDiceRoll(int roll){
-
+    public void moveAfterDiceRoll(){
+        int roll = gameboard.diceRoll();
     }
 }
