@@ -109,6 +109,13 @@ public class gameBoard {
         return player2;
     }
 
+    public Player otherPlayer(){
+        if(player1.getTurn()){
+            return player2;
+        }
+        return player1;
+    }
+
     public boolean ifWon(){
         Player p = currentPlayer();
         return p.getTile().getTileNumber() == winTileNumber;

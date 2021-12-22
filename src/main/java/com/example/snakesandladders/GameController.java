@@ -3,22 +3,28 @@ package com.example.snakesandladders;
 import com.example.snakesandladders.Board.gameBoard;
 import com.example.snakesandladders.Objects.ObjectController;
 import com.example.snakesandladders.Objects.Player;
+import com.example.snakesandladders.NewGame;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
-import java.io.File;
+import java.io.IOException;
 
 public class GameController {
     @FXML
-    private Label player1Label;
+    private static Label player1Label;
 
     @FXML
-    private Label player2Label;
+    private static Label player2Label;
 
     @FXML
     private Button diceRollButton;
@@ -76,6 +82,22 @@ public class GameController {
         diceRollButton.setDisable(false);
     }
 
+    public static void startNewGame() throws IOException {
+        Stage curr = (Stage)player1Label.getScene().getWindow();
+        curr.close();
+
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("gameboard.fxml"));
+        Parent root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Snakes and Ladders");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
     public ImageView getCurrentPiece(){
         Player currPlayer = gameboard.currentPlayer();
         if(currPlayer.getType()==1){
@@ -93,5 +115,23 @@ public class GameController {
             System.out.println("hmm");
         }
         boardGrid.add(currPiece, c, r);
+    }
+
+    public void newGameScreen() throws IOException {
+        Stage newGame = new Stage();
+        Player winner = gameboard.currentPlayer();
+        Player lost = gameboard.otherPlayer();
+
+        NewGame.setPlayers(winner, lost);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("New.fxml"));
+        Parent root = fxmlLoader.load();
+
+        Scene newGameScene = new Scene(root);
+
+        newGame.setTitle("Game Over!");
+        newGame.setScene(newGameScene);
+        newGame.show();
+        newGame.setAlwaysOnTop(true);
     }
 }

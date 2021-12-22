@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="219.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ap_project.New">
+<AnchorPane prefHeight="219.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.snakesandladders.NewGame">
    <children>
       <ImageView fitHeight="219.0" fitWidth="430.0" pickOnBounds="true">
          <image>
@@ -47,11 +47,11 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="exitButton" layoutX="82.0" layoutY="148.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to top, #0066ff -14%, #ccccff 139%);;" text="Exit">
+      <Button fx:id="exitButton" layoutX="82.0" layoutY="148.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="45.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to top, #0066ff -14%, #ccccff 139%);;" text="Exit">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Button fx:id="playAgainButton" layoutX="263.0" layoutY="148.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(to top, #00ff00 -14%, #ccccff 139%);;" text="Play Again">
+      <Button fx:id="playAgainButton" layoutX="263.0" layoutY="148.0" mnemonicParsing="false" onAction="#startNewGame" prefHeight="45.0" prefWidth="114.0" style="-fx-background-color: linear-gradient(to top, #00ff00 -14%, #ccccff 139%);;" text="Play Again">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
