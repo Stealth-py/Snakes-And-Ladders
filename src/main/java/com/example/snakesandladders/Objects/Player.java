@@ -1,5 +1,7 @@
 package com.example.snakesandladders.Objects;
 
+import javafx.scene.control.Button;
+
 public class Player {
     private int type;            //1 or 2
     private Tile tile;

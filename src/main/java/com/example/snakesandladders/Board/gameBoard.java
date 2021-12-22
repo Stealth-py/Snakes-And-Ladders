@@ -2,6 +2,8 @@ package com.example.snakesandladders.Board;
 
 import com.example.snakesandladders.Objects.Player;
 import com.example.snakesandladders.Objects.Tile;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 import java.util.HashMap;
 import java.util.Random;

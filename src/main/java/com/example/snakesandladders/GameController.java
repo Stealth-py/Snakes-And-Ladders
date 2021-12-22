@@ -6,7 +6,11 @@ import com.example.snakesandladders.Objects.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+
+import java.io.File;
 
 public class GameController {
     @FXML
@@ -27,6 +31,9 @@ public class GameController {
     @FXML
     private GridPane boardGrid;
 
+    @FXML
+    private ImageView diceImage;
+
     private gameBoard gameboard;
     private ObjectController objectController;
 
@@ -43,5 +50,27 @@ public class GameController {
     protected void setDiceRollButton(){
         objectController.moveAfterDiceRoll();
         Player currPlayer = gameboard.currentPlayer();
+        System.out.println(currPlayer.getType());
+    }
+
+    public void disableDiceRollButton(){
+        diceRollButton.setDisable(true);
+    }
+
+    public void enableDiceRollButton(){
+        diceRollButton.setDisable(false);
+    }
+
+    public Button getCurrentButton(){
+        Player currPlayer = gameboard.currentPlayer();
+        if(currPlayer.getType()==1){
+            return bluePiece;
+        }
+        return greenPiece;
+    }
+
+    public void movePiece(int r, int c){
+        Button currButton = getCurrentButton();
+        currButton.setVisible(false);
     }
 }
