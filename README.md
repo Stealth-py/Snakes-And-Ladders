@@ -1,2 +1,3 @@
-# AP_Project
-This repository is made for keeping track of our AP Project.
+# Snakes and Ladders
+
+This game was made as a team by Neemesh Yadav and Aditya Choudhary.
